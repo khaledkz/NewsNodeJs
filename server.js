@@ -16,4 +16,33 @@ app.get('/', function(req, res) {
     res.render('index')
 
 })
+
+app.get('/sport', function(req, res) {
+    res.render('sport')
+
+})
+
+app.get('/tec', function(req, res) {
+    res.render('tec')
+
+})
+
+app.get('/uk', function(req, res) {
+    res.render('uk')
+
+})
+
+app.get('/usa', function(req, res) {
+    res.render('usa')
+
+})
+
+app.get('/world', function(req, res) {
+    res.render('world')
+})
+
+app.get('/eco', function(req, res) {
+    res.render('eco')
+})
+
 app.listen(3000);

@@ -146,4 +146,35 @@ index.server ? it should be just index like this  res.render('index')
 ![GitHub Logo](mdImages/handlebarswoknow.png)
 ------------------------------------------------------------------------------------
 
+now we need to make nav bar for 5 pages just add some elements 
+we will not make real nav its just for text 
+
+so we will add 5 element in main page than we will put different contant to each page add route to them and render them
+
+
+I added this nav bar 
+
+<ul style="display:flex;">
+                <li><a href="/world">World news</a></li>
+                <li><a href="/uk">Uk News</a></li>
+                <li><a href="/usa">Usa News</a></li>
+                <li><a href="/eco">Economic News</a></li>
+                <li><a href="/sport">Sport News</a></li>
+                <li><a href="/tec">Tec News</a></li>
+        </ul>
+
+and I created routes and render the handlebars to this routes and ever thing work right
+
+![GitHub Logo](mdImages/allhandlebarswork.png)
+
+
+
+
+ 
+
+
+
+
+
+
 
