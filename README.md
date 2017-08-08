@@ -63,3 +63,11 @@ app.use(formidable());
 app.listen(3000);
 
 -----------------------------------------------------------------------------------------------
+
+now we need to create handlebars pages so we will create view folder inside it we will create one folder layour and 6 handlebars pages
+wolrd.handlebars uk.handlebars  usa.handlebars  eco.handlebars  tec.handlebars sport.handlebars 
+and inside layout folder we will create the default handleabars it name is main.handlebars
+because we have generate the main default page is main code is 
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
+
+------------------------------------------------------------------------------------------------
