@@ -12,4 +12,7 @@ app.set('view engine', 'handlebars');
 app.use(express.static('public'));
 app.use(formidable());
 
+app.get('/', function(req, res) {
+    res.render('index.server')
+})
 app.listen(3000);

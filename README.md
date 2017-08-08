@@ -71,3 +71,55 @@ because we have generate the main default page is main code is
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 
 ------------------------------------------------------------------------------------------------
+
+for now we need to check our work so we need to start work in main handlebars for now we will add a test page to test our page ,
+so now we will go to html page and add these codes
+
+
+<!Docype html>
+<head>
+        <title></title>
+ </head>  
+
+<body>
+        <header>Here there is header</header>
+        {{{body}}}
+        <footer>Here there is footer<footer>
+</body>
+
+now we need to create another file name index inside viw folder to make it the main page.
+
+we created it index.handlebars inside it we add this code <h1>Is Our Work Right till now !!</h1>
+
+for now it should give us this result 
+
+hello I am header
+Is Our Work Right till now
+Here there is footer
+
+two line from default bage and the body from index handlebars
+
+but before that we need to set the route and render the page so we need to add some code
+
+app.get('/', function(req, res) {
+
+})
+
+and inside it 
+
+app.get('/', function(req, res) {
+	res.render('index.server')
+})
+
+now we are done we will add check if it's work 
+
+not Work !! We get Error 
+
+
+ 
+![GitHub Logo](mdImages/CantFindServerModel.png)
+
+
+Now I will try to solve the error
+
+-------------------------------------------------------------------------------
