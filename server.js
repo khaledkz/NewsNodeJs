@@ -13,6 +13,7 @@ app.use(express.static('public'));
 app.use(formidable());
 
 app.get('/', function(req, res) {
-    res.render('index.server')
+    res.render('index')
+
 })
 app.listen(3000);

@@ -123,3 +123,27 @@ not Work !! We get Error
 Now I will try to solve the error
 
 -------------------------------------------------------------------------------
+
+html main not work right 
+
+![GitHub Logo](mdImages/handlebarHtml.png)
+
+I will look where is the mistake 
+
+<!Doctype html>
+We find 2 erors 
+1 we have mistake in <!Doctype html> and fotter tag not close 
+
+the page work we will test the server again 
+
+
+I Fint the error 
+in this line       res.render('index.server')
+
+index.server ? it should be just index like this  res.render('index')
+
+
+![GitHub Logo](mdImages/handlebarswoknow.png)
+------------------------------------------------------------------------------------
+
+
