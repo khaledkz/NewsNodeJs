@@ -1,25 +1,261 @@
-<!Doctpye html>
-<html>
+
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-        <title></title>
-        <style> 
-                li{
+
+    <!-- head -->
+    <meta charset="utf-8">
+    <meta name="msapplicati on-tap-highlight" content="no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="How to use responsive options">
+    <meta name="author" content="David Deutsch">
+    <title>
+        Main Slider
+    </title>
+    <style>
+        img{
+          max-height:200px;
+          min-height:200px;
+        }        
+         #newsNav li{
                 margin:20px;
-                }
-                 </style>
- </head>  
+                list-style: none;
+                 
+         }
+         #newsNav ul{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                flex-wrap: wrap;
+               -webkit-box-pack: justify;
+                 display: -moz-box;
+                 
+
+
+         }
+         
+               
+
+       @media only screen and (min-width: 995px) {
+     #navbarTogglerDemo02 ul{
+                         display: flex;
+                         flex-direction: row;
+                          width: 100%;
+                         justify-content: space-around;
+                 }
+}
+    </style>
+
+    <!-- Stylesheets -->
+    <link rel="icon" href="mainPlanter/000.jpg">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+    <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css ">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,400italic,300italic" rel="stylesheet" type="text/css">
+    <!--<link rel="stylesheet" href="mainPlanter/assets/css/docs.theme.min.css">-->
+
+    <!-- Owl Stylesheets -->
+    <link rel="stylesheet" href="mainPlanter/assets/owlcarousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="mainPlanter/assets/owlcarousel/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="mainPlanter/css/style.css">
+    <link rel="stylesheet" href="owlTypePlanter/css/style.css">
+    <link rel="stylesheet" href="planterCards/css/style.css">
+
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+
+    <!-- Yeah i know js should not be in header. Its required for demos.-->
+
+    <!-- javascript -->
+    <script src="mainPlanter/assets/vendors/jquery.min.js"></script>
+    <script src="mainPlanter/assets/owlcarousel/owl.carousel.js"></script>
+</head>
 
 <body>
-        <ul style="display:flex;">
-                <li><a href="/world">World news</a></li>
-                <li><a href="/uk">Uk News</a></li>
-                <li><a href="/usa">Usa News</a></li>
-                <li><a href="/eco">Economic News</a></li>
-                <li><a href="/sport">Sport News</a></li>
-                <li><a href="/tec">Tec News</a></li>
-        </ul>
-        <header>Here there is header</header>
-        {{{body}}}
-        <footer>Here there is footer</footer>
+
+<header>
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+        <a class="navbar-brand" href="/">
+            <h2 class="text-primary">Home <i class="fa fa-home" aria-hidden="true"></i>
+            </h2>
+        </a>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav mr-auto mt-2 mt-md-0">
+                <li class="nav-item active">
+                    <a class="nav-link text-danger" href="/uk">United Kingdom <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-success" href="/usa">United State</a>
+                </li><li class="nav-item">
+                    <a class="nav-link text-success" href="/eco"> Economic</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-success" href="/tec">Technology</a>
+                </li>
+                 <li class="nav-item">
+                    <a class="nav-link text-success" href="/sport"> Sport</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-success" href="/edu">Education</a>
+                </li>
+                 <li class="nav-item">
+                    <a class="nav-link text-success" href="/art">Art </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-success" href="natural">Natural</a>
+                </li>
+                 <li class="nav-item">
+                    <a class="nav-link disabled" href="#">24/24   </a>
+                </li>
+ 		<li class="nav-item">
+		 <div id="rotate" class="rotateSemi topSemi"></div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+</header>
+                     
+
+  {{{body}}}
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+        $(document).ready(function() {
+
+            //  $$$$$$$$$$$$$$$$$$$$$$$    START MAIN SLIDER       $$$$$$$$$$$$$$$$$$$$$$$-->
+
+            $(".mainSlider #owl-demo").owlCarousel({
+
+                navigation: true, // Show next and prev buttons
+                slideSpeed: 300,
+                paginationSpeed: 400,
+                dots: false,
+                nav: true,
+                items: 1,
+                autoplay: true,
+                itemsDesktop: false,
+                itemsDesktopSmall: false,
+                autoPlayTimeout: 1000,
+                autoplayHoverPause: true,
+                loop: true,
+                itemsTablet: false,
+                navText: ["<i class='fa fa-chevron-left'></i>", "<i class='fa fa-chevron-right'></i>"],
+                itemsMobile: false
+
+            });
+            //  <!--  $$$$$$$$$$$$$$$$$$$$$$$    END MAIN SLIDER       $$$$$$$$$$$$$$$$$$$$$$$-->
+
+
+
+            //  <!--  $$$$$$$$$$$$$$$$$$$$$$$    Start Planter SLIDER       $$$$$$$$$$$$$$$$$$$$$$$-->
+
+            $('#plantersSlider .owl-carousel').owlCarousel({
+                loop: true,
+                // navigation: true,
+                slideSpeed: 300,
+                paginationSpeed: 400,
+                navText: ["<i class='fa fa-chevron-left'></i>", "<i class='fa fa-chevron-right'></i>"],
+                autoPlay: 1000,
+                margin: 10,
+
+                responsive: {
+
+                    0: {
+                        items: 1,
+                        nav: true
+                    },
+                    450: {
+                        items: 2,
+                        nav: true
+                    },
+                    600: {
+                        items: 3,
+                        nav: false
+                    },
+                    1000: {
+                        items: 4,
+                        nav: true,
+                        loop: false,
+                        margin: 20
+                    }
+                }
+            });
+            //  <!--  $$$$$$$$$$$$$$$$$$$$$$$    END   Planter SLIDER       $$$$$$$$$$$$$$$$$$$$$$$-->
+
+            //  <!--  $$$$$$$$$$$$$$$$$$$$$$$    Start   Planter Cars       $$$$$$$$$$$$$$$$$$$$$$$-->
+
+            $('#plantersCard .owl-carousel').owlCarousel({
+                loop: true,
+                // navigation: true,
+                slideSpeed: 300,
+                paginationSpeed: 400,
+                navText: ["<i class='fa fa-chevron-left'></i>", "<i class='fa fa-chevron-right'></i>"],
+                autoPlay: 1000,
+                margin: 10,
+
+                responsive: {
+
+                    0: {
+                        items: 1,
+                        nav: true
+                    },
+                    450: {
+                        items: 2,
+                        nav: true
+                    },
+                    600: {
+                        items: 2,
+                        nav: false
+                    },
+                    1000: {
+                        items: 3,
+                        nav: true,
+                        loop: true,
+                        margin: 20
+                    }
+                }
+            });
+            //  <!--  $$$$$$$$$$$$$$$$$$$$$$$    End   Planter Cars       $$$$$$$$$$$$$$$$$$$$$$$-->
+
+
+        });
+
+
+        /// API
+
+    </script>
+    <!--<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+    <script src="mainPlanter/assets/vendors/highlight.js"></script>
+    <script src="mainPlanter/assets/js/app.js"></script>
+    <script src="mainPlanter/assets/js/js.js"></script>
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
 </body>
+
 </html>

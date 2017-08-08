@@ -37,12 +37,18 @@ app.get('/usa', function(req, res) {
 
 })
 
-app.get('/world', function(req, res) {
-    res.render('world')
+app.get('/art', function(req, res) {
+    res.render('art')
 })
 
+app.get('/natural', function(req, res) {
+    res.render('nature')
+})
 app.get('/eco', function(req, res) {
     res.render('eco')
+})
+app.get('/edu', function(req, res) {
+    res.render('edu')
 })
 
 app.listen(3000);
