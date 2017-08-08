@@ -173,11 +173,10 @@ and I created routes and render the handlebars to this routes and ever thing wor
 ------------------------------------------------------------------------------------------
 Now I want to add my Front End codes I had created before its some sliders 
 and I want to make a two slider to each Page then I will start to add API Ajax requests
-
-
 We added now navbar to all pages and we test them now I will add sliders to all pages and other content
 ----------------------------------------------------------------- 
- 
+I 've added all html pages - 8 pages 
+-----------------------------------------------------------------
 
 
 
