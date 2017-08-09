@@ -179,7 +179,48 @@ I 've added all html pages - 8 pages
 -----------------------------------------------------------------
 
 
+add API KEYS
 
+--------------------------------
+
+Add function for Ajax Request
+
+const loadReposAlzaera = () => {
+    var url = aljazeraAPIUp;
+    var oReq = new XMLHttpRequest();
+    oReq.addEventListener('load', onLoadAlzaera);
+    oReq.open('GET', url);
+    oReq.send();
+}
+
+call the function 
+
+loadReposAlzaera();
+
+add array to hold waht get from Ajax request
+
+let myArrInterNationalNews = [];
+
+
+fuction Recive what get from API Ajax and add the to holder Array 
+
+function onLoadAlzaera() {
+    const text = this.responseText;
+    const reposInfo = JSON.parse(text);
+    const respoArray = reposInfo.articles;
+    // console.log(reposInfo.articles);
+    // console.log(reposInfo.response.docs[0]); ${repo.title}
+    respoArray.forEach(function(repo) {
+        myArrInterNationalNews.push(repo);
+    });
+}
+
+Send the array to html page
+ res.render('index', {
+        InterNationalArr: myArrInterNationalNews
+    })
+
+-------------------------------------------------------------------
 
 
 

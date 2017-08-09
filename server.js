@@ -7,6 +7,13 @@ const exphbs = require('express-handlebars');
 const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
 
+
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
+app.set('view engine', 'handlebars');
+
+app.use(express.static('public'));
+app.use(formidable());
+
 // API KEYS START
 //international news
 const aljazeraAPIUp = "https://newsapi.org/v1/articles?source=al-jazeera-english&sortBy=top&apiKey=32444f5d6e724ace8328a2fefa63e874";
@@ -79,14 +86,35 @@ const newscience = "https://newsapi.org/v1/articles?source=new-scientist&sortBy=
 // API KEYS END
 
 
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
-app.set('view engine', 'handlebars');
+// International News Functions ===========================================
+const loadReposAlzaera = () => {
+    var url = aljazeraAPIUp;
+    var oReq = new XMLHttpRequest();
+    oReq.addEventListener('load', onLoadAlzaera);
+    oReq.open('GET', url);
+    oReq.send();
+}
+loadReposAlzaera();
 
-app.use(express.static('public'));
-app.use(formidable());
+let myArrInterNationalNews = [];
+
+function onLoadAlzaera() {
+    const text = this.responseText;
+    const reposInfo = JSON.parse(text);
+    const respoArray = reposInfo.articles;
+    // console.log(reposInfo.articles);
+    // console.log(reposInfo.response.docs[0]); ${repo.title}
+    respoArray.forEach(function(repo) {
+        myArrInterNationalNews.push(repo);
+    });
+}
+
+// International News Functions ===========================================
 
 app.get('/', function(req, res) {
-    res.render('index')
+    res.render('index', {
+        InterNationalArr: myArrInterNationalNews
+    })
 
 })
 
