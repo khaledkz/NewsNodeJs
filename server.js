@@ -87,14 +87,14 @@ const newscience = "https://newsapi.org/v1/articles?source=new-scientist&sortBy=
 
 
 // International News Functions ===========================================
-const loadReposAlzaera = () => {
-    var url = aljazeraAPIUp;
+const loadReposFunction = (myUrl) => {
+    var url = myUrl;
     var oReq = new XMLHttpRequest();
     oReq.addEventListener('load', onLoadAlzaera);
     oReq.open('GET', url);
     oReq.send();
 }
-loadReposAlzaera();
+loadReposFunction(aljazeraAPIUp);
 
 let myArrInterNationalNews = [];
 

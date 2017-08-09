@@ -223,7 +223,7 @@ Send the array to html page
 
 
 -------------------------------------------------------------------
-
+change the function and make the url parrameter it will help too much to reduce a lot of codes
 
 
 
