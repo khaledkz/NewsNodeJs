@@ -90,15 +90,17 @@ const newscience = "https://newsapi.org/v1/articles?source=new-scientist&sortBy=
 const loadReposFunction = (myUrl) => {
     var url = myUrl;
     var oReq = new XMLHttpRequest();
-    oReq.addEventListener('load', onLoadAlzaera);
+    oReq.addEventListener('load', onLoadInternationalFunction);
     oReq.open('GET', url);
     oReq.send();
 }
 loadReposFunction(aljazeraAPIUp);
+loadReposFunction(associatedPressAPI);
+loadReposFunction(BloomingAPI);
 
 let myArrInterNationalNews = [];
 
-function onLoadAlzaera() {
+function onLoadInternationalFunction() {
     const text = this.responseText;
     const reposInfo = JSON.parse(text);
     const respoArray = reposInfo.articles;
