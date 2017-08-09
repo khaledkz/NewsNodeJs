@@ -54,13 +54,18 @@
             <div class="col-lg-9 sliderInside col-md-12 col-sm-12">
 
                 <div class=" owl-carousel owl-theme container  ">
+            {{#each InterNationalArrTwo}}
 
                     <div class="item thumbnail">
-                        <p class="text-center text-success"> Title</p>
-                        <a href="1.html"><img src="lookinggreat.png"></a>
-                        <h5 class="text-center text-danger">Pargraph</h5>
+                        {{#if this.publishedAt}}
+                        <p class="text-center text-success"> {{this.publishedAt}}</p>
+                        {{else}}
+                        <p class="text-center text-success"> News</p>
+                        {{/if}}
+                        <a href="1.html"><img src="{{this.urlToImage}}"></a>
+                        <h5 class="text-center text-danger">{{this.title}}</h5>
                     </div>
-                    
+                    {{/each}}
                     
                 </div>
             </div>

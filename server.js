@@ -19,9 +19,7 @@ app.use(formidable());
 const aljazeraAPIUp = "https://newsapi.org/v1/articles?source=al-jazeera-english&sortBy=top&apiKey=32444f5d6e724ace8328a2fefa63e874";
 const aljazeraAPIUpTwo = "https://newsapi.org/v1/articles?source=al-jazeera-english&sortBy=latest&apiKey=32444f5d6e724ace8328a2fefa63e874";
 const associatedPressAPI = "https://newsapi.org/v1/articles?source=associated-press&sortBy=top&apiKey=32444f5d6e724ace8328a2fefa63e874";
-const associatedPressAPITwo = "https://newsapi.org/v1/articles?source=associated-press&sortBy=latest&apiKey=32444f5d6e724ace8328a2fefa63e874";
 const BloomingAPI = "https://newsapi.org/v1/articles?source=bloomberg&sortBy=top&apiKey=32444f5d6e724ace8328a2fefa63e874";
-const BloomingAPITwo = "https://newsapi.org/v1/articles?source=bloomberg&sortBy=latest&apiKey=32444f5d6e724ace8328a2fefa63e874";
 //uk news
 const BbcNewsAPI = "https://newsapi.org/v1/articles?source=bbc-news&sortBy=top&apiKey=32444f5d6e724ace8328a2fefa63e874";
 const BbcNewsAPITwo = "https://newsapi.org/v1/articles?source=bbc-news&sortBy=latest&apiKey=32444f5d6e724ace8328a2fefa63e874";
@@ -87,27 +85,49 @@ const newscience = "https://newsapi.org/v1/articles?source=new-scientist&sortBy=
 
 
 // International News Functions ===========================================
-const loadReposFunction = (myUrl) => {
+const loadReposFunction = (myUrl, directions) => {
     var url = myUrl;
     var oReq = new XMLHttpRequest();
-    oReq.addEventListener('load', onLoadInternationalFunction);
+    if (directions === "up") {
+        oReq.addEventListener('load', onLoadInternationalFunctionUp);
+    } else if (directions === "down") {
+        oReq.addEventListener('load', onLoadInternationalFunctionDown);
+    }
     oReq.open('GET', url);
     oReq.send();
 }
-loadReposFunction(aljazeraAPIUp);
-loadReposFunction(associatedPressAPI);
-loadReposFunction(BloomingAPI);
 
-let myArrInterNationalNews = [];
 
-function onLoadInternationalFunction() {
+loadReposFunction(aljazeraAPIUp, "up");
+loadReposFunction(associatedPressAPI, "up");
+loadReposFunction(BloomingAPI, "up");
+
+loadReposFunction(aljazeraAPIUpTwo, "down");
+loadReposFunction(TelegraphAPITwo, "down");
+loadReposFunction(dailyMailAPITwo, "down");
+
+let myArrInterNationalNewsUp = [];
+let myArrInterNationalNewsDown = [];
+
+function onLoadInternationalFunctionUp() {
     const text = this.responseText;
     const reposInfo = JSON.parse(text);
     const respoArray = reposInfo.articles;
     // console.log(reposInfo.articles);
     // console.log(reposInfo.response.docs[0]); ${repo.title}
     respoArray.forEach(function(repo) {
-        myArrInterNationalNews.push(repo);
+        myArrInterNationalNewsUp.push(repo);
+    });
+}
+
+function onLoadInternationalFunctionDown() {
+    const text = this.responseText;
+    const reposInfo = JSON.parse(text);
+    const respoArray = reposInfo.articles;
+    // console.log(reposInfo.articles);
+    // console.log(reposInfo.response.docs[0]); ${repo.title}
+    respoArray.forEach(function(repo) {
+        myArrInterNationalNewsDown.push(repo);
     });
 }
 
@@ -115,7 +135,8 @@ function onLoadInternationalFunction() {
 
 app.get('/', function(req, res) {
     res.render('index', {
-        InterNationalArr: myArrInterNationalNews
+        InterNationalArr: myArrInterNationalNewsUp,
+        InterNationalArrTwo: myArrInterNationalNewsDown
     })
 
 })
