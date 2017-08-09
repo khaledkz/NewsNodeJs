@@ -85,26 +85,31 @@ const newscience = "https://newsapi.org/v1/articles?source=new-scientist&sortBy=
 
 
 // International News Functions ===========================================
-const loadReposFunction = (myUrl, directions) => {
+const loadReposFunction = (myUrl, directions, option) => {
     var url = myUrl;
     var oReq = new XMLHttpRequest();
     if (directions === "up") {
-        oReq.addEventListener('load', onLoadInternationalFunctionUp);
+        if (option === "international") {
+            oReq.addEventListener('load', onLoadInternationalFunctionUp);
+        }
     } else if (directions === "down") {
-        oReq.addEventListener('load', onLoadInternationalFunctionDown);
+        if (option === "international") {
+
+            oReq.addEventListener('load', onLoadInternationalFunctionDown);
+        }
     }
     oReq.open('GET', url);
     oReq.send();
 }
 
 
-loadReposFunction(aljazeraAPIUp, "up");
-loadReposFunction(associatedPressAPI, "up");
-loadReposFunction(BloomingAPI, "up");
+loadReposFunction(aljazeraAPIUp, "up", "international");
+loadReposFunction(associatedPressAPI, "up", "international");
+loadReposFunction(BloomingAPI, "up", "international");
 
-loadReposFunction(aljazeraAPIUpTwo, "down");
-loadReposFunction(TelegraphAPITwo, "down");
-loadReposFunction(dailyMailAPITwo, "down");
+loadReposFunction(aljazeraAPIUpTwo, "down", "international");
+loadReposFunction(TelegraphAPITwo, "down", "international");
+loadReposFunction(dailyMailAPITwo, "down", "international");
 
 let myArrInterNationalNewsUp = [];
 let myArrInterNationalNewsDown = [];
