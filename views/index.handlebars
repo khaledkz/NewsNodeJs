@@ -19,12 +19,26 @@
 
 
         <div class=" owl-carousel owl-theme container  ">
-
+            {{#each InterNationalArr}}
             <div class="item thumbnail">
+                 {{#if this.urlToImage}}
+                 <a href="3.html"><img src="{{this.urlToImage}}"></a>
+                 {{else}}
                 <a href="3.html"><img src="lookinggreat.png"></a>
-                <h5 class="text-center text-primary">Title</h5>
-                <p class="text-center text-muted">pargraph</p>
+                {{/if}}
+                 {{#if this.author}}
+                <h5 class="text-center text-primary">{{this.author}}</h5>
+                {{else}}
+                <h5 class="text-center text-primary">News</h5>
+                
+                {{/if}}
+                 {{#if this.title}}
+                <p class="text-center text-muted">{{this.title}}</p>
+                {{else}}
+                <p class="text-center text-muted">4zoro News</p>
+                 {{/if}}
             </div>
+            {{/each}}
 
         </div>
     </div>

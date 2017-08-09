@@ -220,6 +220,8 @@ Send the array to html page
         InterNationalArr: myArrInterNationalNews
     })
 
+
+
 -------------------------------------------------------------------
 
 
