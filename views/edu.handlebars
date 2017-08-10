@@ -4,40 +4,63 @@
   <h1 class="text-white" style="text-align:center;">Education News</h1>
 </nav>
 
-    <div id="plantersCard">
-
-
-        <div class=" owl-carousel owl-theme container  ">
-
+    <div class=" owl-carousel owl-theme container  ">
+            {{#each eduarr}}
             <div class="item thumbnail">
+                 {{#if this.urlToImage}}
+                 <a href="3.html"><img src="{{this.urlToImage}}"></a>
+                 {{else}}
                 <a href="3.html"><img src="lookinggreat.png"></a>
-                <h5 class="text-center text-primary">Title</h5>
-                <p class="text-center text-muted">pargraph</p>
+                {{/if}}
+                 {{#if this.author}}
+                <h5 class="text-center text-primary">{{this.author}}</h5>
+                {{else}}
+                <h5 class="text-center text-primary">News</h5>
+                
+                {{/if}}
+                 {{#if this.title}}
+                <p class="text-center text-muted">{{this.title}}</p>
+                {{else}}
+                <p class="text-center text-muted">UK News</p>
+                 {{/if}}
             </div>
+            {{/each}}
 
         </div>
     </div>
-
-
 
     <div id="plantersSlider">
         <div class="row">
 
             <div class="leftBoxSlider col col-lg-3 col-md-12 col-sm-12">
-                <h6 id="sentenceLeft" class="text-warning">Education News</h6>
-                <button class="btn btn-danger">See All</button>
+                <h6 id="sentenceLeft" class="text-warning"> Title</h6>
+                <button class="btn btn-danger">Pargraph</button>
             </div>
 
             <div class="col-lg-9 sliderInside col-md-12 col-sm-12">
 
                 <div class=" owl-carousel owl-theme container  ">
+            {{#each eduarr}}
 
                     <div class="item thumbnail">
-                        <p class="text-center text-success">Pargraph</p>
-                        <a href="1.html"><img src="lookinggreat.png"></a>
-                        <h5 class="text-center text-danger">Title</h5>
+                        {{#if this.publishedAt}}
+                        <p class="text-center text-success"> {{this.publishedAt}}</p>
+                        {{else}}
+                        <p class="text-center text-success"> News</p>
+                        {{/if}}
+                        {{#if this.urlToImage}}
+                        <a href="1.html"><img src="{{this.urlToImage}}"></a>
+                        {{else}}
+                         <a href="3.html"><img src="lookinggreat.png"></a>             
+                         {{/if}}
+                         {{#if this.title}}
+                        <h5 class="text-center text-danger">{{this.title}}</h5>
+                        {{else}}
+                        <h5 class="text-center text-danger">Uk News</h5>
+
+                         {{/if}}
                     </div>
-                    
+                    {{/each}}
                     
                 </div>
             </div>

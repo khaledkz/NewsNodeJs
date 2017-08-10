@@ -107,7 +107,7 @@ const loadReposFunction = (myUrl, directions, option) => {
         } else if (option === "economicUp") {
             oReq.addEventListener('load', onLoadEconomicUp);
 
-        } else if (option === "artup") {
+        } else if (option === "art") {
             oReq.addEventListener('load', onLoadArtUp);
 
         }
@@ -197,16 +197,11 @@ loadReposFunction(FoxSportAPITwo, "down", "sport");
 loadReposFunction(FootballItliaAPI, "down", "sport");
 loadReposFunction(FootballItliaAPITwo, "down", "sport");
 
+loadReposFunction(newscience, "up", "education");
 
+loadReposFunction(nationalGraphicAPI, "up", "nature");
 
-
-
-// BbcNewsAPITwo
-// dailyMailAPITwo
-// FinancialTimesAPITwo
-// IndependentAPITwo
-// MetroAPITwo
-// TelegraphAPITwo
+loadReposFunction(EntertianmentWeekAPI, "up", "art");
 
 loadReposFunction(aljazeraAPIUpTwo, "down", "international");
 loadReposFunction(TelegraphAPITwo, "down", "international");
@@ -227,7 +222,7 @@ let myArrayEcoDowun = [];
 let myArraySprotUp = [];
 let myArraySprotDoen = [];
 
-let myArrayAtyUp = [];
+let myArrayArtUp = [];
 let myArrayArtDown = [];
 
 let myArrayEduUp = [];
@@ -239,7 +234,6 @@ let myArrayNaturalDown = [];
 let myArrayTecUp = [];
 let myArrayTecDown = [];
 
-let myArrayArtUp = [];
 
 function onLoadInternationalFunctionUp() {
     const text = this.responseText;
@@ -319,6 +313,7 @@ function onLoadNatureUp() {
     respoArray.forEach(function(repo) {
         myArrayNaturalUp.push(repo);
     });
+
 }
 
 function onLoadSportUp() {
@@ -353,6 +348,7 @@ function onLoadArtUp() {
     respoArray.forEach(function(repo) {
         myArrayArtUp.push(repo);
     });
+    console.log(myArrayArtUp);
 }
 
 
@@ -376,7 +372,6 @@ function onLoadUKDown() {
     respoArray.forEach(function(repo) {
         myArrayUKDowun.push(repo);
     });
-    console.log(myArrayUKDowun)
 }
 
 function onLoadusaDown() {
@@ -399,7 +394,6 @@ function onLoadEduDown() {
     respoArray.forEach(function(repo) {
         myArrayEduDown.push(repo);
     });
-
 }
 
 function onLoadTecDown() {
@@ -488,15 +482,16 @@ app.get('/usa', function(req, res) {
 
 })
 
+
 app.get('/art', function(req, res) {
     res.render('art', {
-        InterNationalArr: myArrayAtyUp
+        artUp: myArrayArtUp
     })
 })
 
 app.get('/natural', function(req, res) {
     res.render('nature', {
-        InterNationalArr: myArrayNaturalUp
+        natureArr: myArrayNaturalUp
     })
 })
 app.get('/eco', function(req, res) {
@@ -506,9 +501,13 @@ app.get('/eco', function(req, res) {
 
     })
 })
+
+
+
 app.get('/edu', function(req, res) {
     res.render('edu', {
-        InterNationalArrTwo: myArrayEduUp
+        eduarr: myArrayEduUp,
+        eduArrTwo: myArrayEduDown
     })
 })
 
