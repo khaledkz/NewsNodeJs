@@ -91,11 +91,51 @@ const loadReposFunction = (myUrl, directions, option) => {
     if (directions === "up") {
         if (option === "international") {
             oReq.addEventListener('load', onLoadInternationalFunctionUp);
+        } else if (option === "uk") {
+            oReq.addEventListener('load', onLoadUKUp);
+
+        } else if (option === "usa") {
+            oReq.addEventListener('load', onLoadusaUp);
+
+        } else if (option === "education") {
+            oReq.addEventListener('load', onLoadEduUp);
+
+        } else if (option === "tec") {
+            oReq.addEventListener('load', onLoadTecUp);
+        } else if (option === "nature") {
+            oReq.addEventListener('load', onLoadNatureUp);
+
+        } else if (option === "sport") {
+            oReq.addEventListener('load', onLoadSportUp);
+        } else if (option === "economicUp") {
+            oReq.addEventListener('load', onLoadEconomicUp);
+
+        } else if (option === "artup") {
+            oReq.addEventListener('load', onLoadArtUp);
+
         }
     } else if (directions === "down") {
         if (option === "international") {
-
             oReq.addEventListener('load', onLoadInternationalFunctionDown);
+        } else if (option === "uk") {
+            oReq.addEventListener('load', onLoadUKDown);
+
+        } else if (option === "usa") {
+            oReq.addEventListener('load', onLoadusaDown);
+
+        } else if (option === "education") {
+            oReq.addEventListener('load', onLoadEduDown);
+
+        } else if (option === "tec") {
+            oReq.addEventListener('load', onLoadTecDown);
+        } else if (option === "nature") {
+            oReq.addEventListener('load', onLoadNatureDown);
+
+        } else if (option === "sport") {
+            oReq.addEventListener('load', onLoadSportDown);
+        } else if (option === "economicUp") {
+            oReq.addEventListener('load', onLoadEconomicDown);
+
         }
     }
     oReq.open('GET', url);
@@ -107,12 +147,57 @@ loadReposFunction(aljazeraAPIUp, "up", "international");
 loadReposFunction(associatedPressAPI, "up", "international");
 loadReposFunction(BloomingAPI, "up", "international");
 
+
+
+
+loadReposFunction(BbcNewsAPI, "up", "uk");
+loadReposFunction(dailyMailAPI, "up", "uk");
+loadReposFunction(FinancialTimesAPI, "up", "uk");
+loadReposFunction(IndependentAPI, "up", "uk");
+loadReposFunction(MetroAPI, "up", "uk");
+loadReposFunction(TelegraphAPI, "up", "uk");
+
+loadReposFunction(FinancialTimesAPITwo, "down", "uk");
+loadReposFunction(MetroAPITwo, "down", "uk");
+
+// BbcNewsAPITwo
+// dailyMailAPITwo
+// FinancialTimesAPITwo
+// IndependentAPITwo
+// MetroAPITwo
+// TelegraphAPITwo
 loadReposFunction(aljazeraAPIUpTwo, "down", "international");
 loadReposFunction(TelegraphAPITwo, "down", "international");
 loadReposFunction(dailyMailAPITwo, "down", "international");
 
 let myArrInterNationalNewsUp = [];
 let myArrInterNationalNewsDown = [];
+
+let myArrayUKUp = [];
+let myArrayUKDowun = [];
+
+let myArrayUsaUp = [];
+let myArrayUsaDown = [];
+
+let myArrayEcoUp = [];
+let myArrayEcoDowun = [];
+
+let myArraySprotUp = [];
+let myArraySprotDoen = [];
+
+let myArrayAtyUp = [];
+let myArrayArtDown = [];
+
+let myArrayEduUp = [];
+let myArrayEduDown = [];
+
+let myArrayNaturalUp = [];
+let myArrayNaturalDown = [];
+
+let myArrayTecUp = [];
+let myArrayTecDown = [];
+
+let myArrayArtUp = [];
 
 function onLoadInternationalFunctionUp() {
     const text = this.responseText;
@@ -136,6 +221,216 @@ function onLoadInternationalFunctionDown() {
     });
 }
 
+
+function onLoadUKUp() {
+    const text = this.responseText;
+    const reposInfo = JSON.parse(text);
+    const respoArray = reposInfo.articles;
+    // console.log(reposInfo.articles);
+    // console.log(reposInfo.response.docs[0]); ${repo.title}
+    respoArray.forEach(function(repo) {
+        myArrayUKUp.push(repo);
+    });
+}
+
+
+function onLoadusaUp() {
+    const text = this.responseText;
+    const reposInfo = JSON.parse(text);
+    const respoArray = reposInfo.articles;
+    // console.log(reposInfo.articles);
+    // console.log(reposInfo.response.docs[0]); ${repo.title}
+    respoArray.forEach(function(repo) {
+        myArrayUsaUp.push(repo);
+    });
+}
+
+
+
+function onLoadEduUp() {
+    const text = this.responseText;
+    const reposInfo = JSON.parse(text);
+    const respoArray = reposInfo.articles;
+    // console.log(reposInfo.articles);
+    // console.log(reposInfo.response.docs[0]); ${repo.title}
+    respoArray.forEach(function(repo) {
+        myArrayEduUp.push(repo);
+    });
+}
+
+function onLoadTecUp() {
+    const text = this.responseText;
+    const reposInfo = JSON.parse(text);
+    const respoArray = reposInfo.articles;
+    // console.log(reposInfo.articles);
+    // console.log(reposInfo.response.docs[0]); ${repo.title}
+    respoArray.forEach(function(repo) {
+        myArrayTecUp.push(repo);
+    });
+}
+
+
+
+function onLoadNatureUp() {
+    const text = this.responseText;
+    const reposInfo = JSON.parse(text);
+    const respoArray = reposInfo.articles;
+    // console.log(reposInfo.articles);
+    // console.log(reposInfo.response.docs[0]); ${repo.title}
+    respoArray.forEach(function(repo) {
+        myArrayNaturalUp.push(repo);
+    });
+}
+
+function onLoadSportUp() {
+    const text = this.responseText;
+    const reposInfo = JSON.parse(text);
+    const respoArray = reposInfo.articles;
+    // console.log(reposInfo.articles);
+    // console.log(reposInfo.response.docs[0]); ${repo.title}
+    respoArray.forEach(function(repo) {
+        myArraySprotUp.push(repo);
+    });
+}
+
+
+
+function onLoadEconomicUp() {
+    const text = this.responseText;
+    const reposInfo = JSON.parse(text);
+    const respoArray = reposInfo.articles;
+    // console.log(reposInfo.articles);
+    // console.log(reposInfo.response.docs[0]); ${repo.title}
+    respoArray.forEach(function(repo) {
+        myArrayArtUp.push(repo);
+    });
+}
+
+function onLoadArtUp() {
+    const text = this.responseText;
+    const reposInfo = JSON.parse(text);
+    const respoArray = reposInfo.articles;
+    // console.log(reposInfo.articles);
+    // console.log(reposInfo.response.docs[0]); ${repo.title}
+    respoArray.forEach(function(repo) {
+        myArrayEcoUp.push(repo);
+    });
+}
+
+
+function onLoadInternationalFunctionDown() {
+    const text = this.responseText;
+    const reposInfo = JSON.parse(text);
+    const respoArray = reposInfo.articles;
+    // console.log(reposInfo.articles);
+    // console.log(reposInfo.response.docs[0]); ${repo.title}
+    respoArray.forEach(function(repo) {
+        myArrInterNationalNewsDown.push(repo);
+    });
+}
+
+
+function onLoadUKDown() {
+    const text = this.responseText;
+    const reposInfo = JSON.parse(text);
+    const respoArray = reposInfo.articles;
+    // console.log(reposInfo.articles);
+    // console.log(reposInfo.response.docs[0]); ${repo.title}
+    respoArray.forEach(function(repo) {
+        myArrayUKDowun.push(repo);
+    });
+    console.log(myArrayUKDowun)
+}
+
+function onLoadusaDown() {
+    const text = this.responseText;
+    const reposInfo = JSON.parse(text);
+    const respoArray = reposInfo.articles;
+    // console.log(reposInfo.articles);
+    // console.log(reposInfo.response.docs[0]); ${refunction onLoadInternationalFunctionUp() {
+    respoArray.forEach(function(repo) {
+        myArrInterNationalNewsUp.push(repo);
+    });
+}
+
+function onLoadEduDown() {
+    const text = this.responseText;
+    const reposInfo = JSON.parse(text);
+    const respoArray = reposInfo.articles;
+    // console.log(reposInfo.articles);
+    // console.log(reposInfo.response.docs[0]); ${repo.title}
+    respoArray.forEach(function(repo) {
+        myArrInterNationalNewsDown.push(repo);
+    });
+}
+
+function onLoadTecDown() {
+    const text = this.responseText;
+    const reposInfo = JSON.parse(text);
+    const respoArray = reposInfo.articles;
+    // console.log(reposInfo.articles);
+    // console.log(reposInfo.response.docs[0]); ${repo.title}
+    respoArray.forEach(function(repo) {
+        myArrInterNationalNewsUp.push(repo);
+    });
+}
+
+
+function onLoadSportDown() {
+    const text = this.responseText;
+    const reposInfo = JSON.parse(text);
+    const respoArray = reposInfo.articles;
+    // console.log(reposInfo.articles);
+    // console.log(reposInfo.response.docs[0]); ${repo.title}
+    respoArray.forEach(function(repo) {
+        myArrInterNationalNewsDown.push(repo);
+    });
+}
+
+function onLoadNatureDown() {
+    const text = this.responseText;
+    const reposInfo = JSON.parse(text);
+    const respoArray = reposInfo.articles;
+    // console.log(reposInfo.articles);
+    // console.log(reposInfo.response.docs[0]); ${repo.title}
+    respoArray.forEach(function(repo) {
+        myArrInterNationalNewsDown.push(repo);
+    });
+}
+
+function onLoadEconomicDown() {
+    const text = this.responseText;
+    const reposInfo = JSON.parse(text);
+    const respoArray = reposInfo.articles;
+    // console.log(reposInfo.articles);
+    // console.log(reposInfo.response.docs[0]); ${repo.title}
+    respoArray.forEach(function(repo) {
+        myArrInterNationalNewsDown.push(repo);
+    });
+}
+
+
+
+/* 
+let myArrayUKUp = [];
+let myArrayUKDowun = [];
+let myArrayUsaUp = [];
+let myArrayUsaDown = [];
+let myArrayEcoUp = [];
+let myArrayEcoDowun = [];
+let myArraySprotUp = [];
+let myArraySprotDoen = [];
+let myArrayAtyUp = [];
+let myArrayArtDown = [];
+let myArrayEduUp = [];
+let myArrayEduDown = [];
+let myArrayNaturalUp = [];
+let myArrayNaturalDown = [];
+let myArrayTecUp = [];
+let myArrayTecDown = [];
+let myArrayArtUp = [];
+ */
+
 // International News Functions ===========================================
 
 app.get('/', function(req, res) {
@@ -147,37 +442,54 @@ app.get('/', function(req, res) {
 })
 
 app.get('/sport', function(req, res) {
-    res.render('sport')
+    res.render('sport', {
+        InterNationalArr: myArraySprotUp
+    })
 
 })
 
 app.get('/tec', function(req, res) {
-    res.render('tec')
+    res.render('tec', {
+        InterNationalArr: myArrayTecUp
+    })
 
 })
 
 app.get('/uk', function(req, res) {
-    res.render('uk')
+    res.render('uk', {
+        UkArrUp: myArrayUKUp,
+        UkArrDown: myArrayUKDowun
+    })
 
 })
 
 app.get('/usa', function(req, res) {
-    res.render('usa')
+    res.render('usa', {
+        InterNationalArr: myArrayUsaUp
+    })
 
 })
 
 app.get('/art', function(req, res) {
-    res.render('art')
+    res.render('art', {
+        InterNationalArr: myArrayAtyUp
+    })
 })
 
 app.get('/natural', function(req, res) {
-    res.render('nature')
+    res.render('nature', {
+        InterNationalArr: myArrayNaturalUp
+    })
 })
 app.get('/eco', function(req, res) {
-    res.render('eco')
+    res.render('eco', {
+        InterNationalArr: myArrayEcoUp
+    })
 })
 app.get('/edu', function(req, res) {
-    res.render('edu')
+    res.render('edu', {
+        InterNationalArrTwo: myArrayEduUp
+    })
 })
 
 app.listen(3000);
