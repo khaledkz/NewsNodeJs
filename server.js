@@ -8,7 +8,6 @@ app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 app.use(express.static('public'));
 app.use(formidable());
-
 // API KEYS START
 //international news
 const aljazeraAPIUp = "https://newsapi.org/v1/articles?source=al-jazeera-english&sortBy=top&apiKey=32444f5d6e724ace8328a2fefa63e874";
@@ -49,7 +48,6 @@ const gruenderszen = "https://newsapi.org/v1/articles?source=gruenderszene&sortB
 const gruenderszenTwo = "https://newsapi.org/v1/articles?source=gruenderszene&sortBy=latest&apiKey=32444f5d6e724ace8328a2fefa63e874"
     //sport news
 const BbcSportAPI = "https://newsapi.org/v1/articles?source=bbc-sport&sortBy=top&apiKey=32444f5d6e724ace8328a2fefa63e874";
-const BbcSportAPITwo = "https://newsapi.org/v1/articles?source=bbc-sport&sortBy=latest&apiKey=32444f5d6e724ace8328a2fefa63e874";
 const espnAPI = "https://newsapi.org/v1/articles?source=espn&sortBy=top&apiKey=32444f5d6e724ace8328a2fefa63e874";
 const espnTwoAPI = "https://newsapi.org/v1/articles?source=espn-cric-info&sortBy=top&apiKey=32444f5d6e724ace8328a2fefa63e874";
 const espnThreeAPI = "https://newsapi.org/v1/articles?source=espn-cric-info&sortBy=latest&apiKey=32444f5d6e724ace8328a2fefa63e874";
@@ -57,7 +55,8 @@ const FoxSportAPI = "https://newsapi.org/v1/articles?source=fox-sports&sortBy=to
 const FoxSportAPITwo = "https://newsapi.org/v1/articles?source=fox-sports&sortBy=latest&apiKey=32444f5d6e724ace8328a2fefa63e874";
 const FootballItliaAPI = "https://newsapi.org/v1/articles?source=football-italia&sortBy=top&apiKey=32444f5d6e724ace8328a2fefa63e874";
 const FootballItliaAPITwo = "https://newsapi.org/v1/articles?source=football-italia&sortBy=latest&apiKey=32444f5d6e724ace8328a2fefa63e874";
-//Art news
+
+//Art news 
 const EntertianmentWeekAPI = "https://newsapi.org/v1/articles?source=entertainment-weekly&sortBy=top&apiKey=32444f5d6e724ace8328a2fefa63e874";
 //Tecno
 const ArsTecAPI = "https://newsapi.org/v1/articles?source=ars-technica&sortBy=top&apiKey=32444f5d6e724ace8328a2fefa63e874";
@@ -188,12 +187,27 @@ loadReposFunction(BuzFeexAPITwo, "down", "economicUp");
 loadReposFunction(gruenderszenTwo, "down", "economicUp");
 
 
+loadReposFunction(BbcSportAPI, "up", "sport");
+loadReposFunction(espnAPI, "up", "sport");
+loadReposFunction(espnTwoAPI, "up", "sport");
+loadReposFunction(espnThreeAPI, "up", "sport");
+loadReposFunction(FoxSportAPI, "up", "sport");
+
+loadReposFunction(FoxSportAPITwo, "down", "sport");
+loadReposFunction(FootballItliaAPI, "down", "sport");
+loadReposFunction(FootballItliaAPITwo, "down", "sport");
+
+
+
+
+
 // BbcNewsAPITwo
 // dailyMailAPITwo
 // FinancialTimesAPITwo
 // IndependentAPITwo
 // MetroAPITwo
 // TelegraphAPITwo
+
 loadReposFunction(aljazeraAPIUpTwo, "down", "international");
 loadReposFunction(TelegraphAPITwo, "down", "international");
 loadReposFunction(dailyMailAPITwo, "down", "international");
@@ -399,7 +413,6 @@ function onLoadTecDown() {
     });
 }
 
-
 function onLoadSportDown() {
     const text = this.responseText;
     const reposInfo = JSON.parse(text);
@@ -442,9 +455,11 @@ app.get('/', function(req, res) {
 
 })
 
+
 app.get('/sport', function(req, res) {
     res.render('sport', {
-        InterNationalArr: myArraySprotUp
+        sportArr: myArraySprotUp,
+        sportArrTwo: myArraySprotDoen
     })
 
 })
