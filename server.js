@@ -164,7 +164,18 @@ loadReposFunction(usaTodayTwo, "down", "usa");
 loadReposFunction(newYorkMagzineTwo, "down", "usa");
 loadReposFunction(timeNewsTwo, "down", "usa");
 
+loadReposFunction(ArsTecAPI, "up", "tec");
+loadReposFunction(recodeAPI, "up", "tec");
+loadReposFunction(EngandetAPI, "up", "tec");
+loadReposFunction(hackerNewsAPI, "up", "tec");
+loadReposFunction(TechChorch, "up", "tec");
+loadReposFunction(TechRadarAPI, "up", "tec");
+loadReposFunction(TheNextWebAPI, "up", "tec");
 
+loadReposFunction(ArsTecAPITwo, "down", "tec");
+loadReposFunction(EngandetAPITwo, "down", "tec");
+loadReposFunction(TechChorchTwo, "down", "tec");
+loadReposFunction(TechRadarTwoAPI, "down", "tec");
 
 
 loadReposFunction(businessInsiderAPI, "up", "economicUp");
@@ -249,7 +260,6 @@ function onLoadUKUp() {
         myArrayUKUp.push(repo);
     });
 }
-
 
 function onLoadusaUp() {
     const text = this.responseText;
@@ -343,7 +353,6 @@ function onLoadInternationalFunctionDown() {
     });
 }
 
-
 function onLoadUKDown() {
     const text = this.responseText;
     const reposInfo = JSON.parse(text);
@@ -374,8 +383,9 @@ function onLoadEduDown() {
     // console.log(reposInfo.articles);
     // console.log(reposInfo.response.docs[0]); ${repo.title}
     respoArray.forEach(function(repo) {
-        myArrInterNationalNewsDown.push(repo);
+        myArrayEduDown.push(repo);
     });
+
 }
 
 function onLoadTecDown() {
@@ -385,7 +395,7 @@ function onLoadTecDown() {
     // console.log(reposInfo.articles);
     // console.log(reposInfo.response.docs[0]); ${repo.title}
     respoArray.forEach(function(repo) {
-        myArrInterNationalNewsUp.push(repo);
+        myArrayTecDown.push(repo);
     });
 }
 
@@ -397,7 +407,7 @@ function onLoadSportDown() {
     // console.log(reposInfo.articles);
     // console.log(reposInfo.response.docs[0]); ${repo.title}
     respoArray.forEach(function(repo) {
-        myArrInterNationalNewsDown.push(repo);
+        myArraySprotDoen.push(repo);
     });
 }
 
@@ -408,7 +418,7 @@ function onLoadNatureDown() {
     // console.log(reposInfo.articles);
     // console.log(reposInfo.response.docs[0]); ${repo.title}
     respoArray.forEach(function(repo) {
-        myArrInterNationalNewsDown.push(repo);
+        myArrayNaturalDown.push(repo);
     });
 }
 
@@ -422,29 +432,6 @@ function onLoadEconomicDown() {
         myArrayEcoDowun.push(repo);
     });
 }
-
-
-
-/* 
-let myArrayUKUp = [];
-let myArrayUKDowun = [];
-let myArrayUsaUp = [];
-let myArrayUsaDown = [];
-let myArrayEcoUp = [];
-let myArrayEcoDowun = [];
-let myArraySprotUp = [];
-let myArraySprotDoen = [];
-let myArrayAtyUp = [];
-let myArrayArtDown = [];
-let myArrayEduUp = [];
-let myArrayEduDown = [];
-let myArrayNaturalUp = [];
-let myArrayNaturalDown = [];
-let myArrayTecUp = [];
-let myArrayTecDown = [];
-let myArrayArtUp = [];
- */
-
 // International News Functions ===========================================
 
 app.get('/', function(req, res) {
@@ -464,7 +451,8 @@ app.get('/sport', function(req, res) {
 
 app.get('/tec', function(req, res) {
     res.render('tec', {
-        InterNationalArr: myArrayTecUp
+        tecArr: myArrayTecUp,
+        tecArrTwo: myArrayTecDown
     })
 
 })
