@@ -35,10 +35,15 @@ const TelegraphAPI = "https://newsapi.org/v1/articles?source=the-telegraph&sortB
 const TelegraphAPITwo = "https://newsapi.org/v1/articles?source=the-telegraph&sortBy=latest&apiKey=32444f5d6e724ace8328a2fefa63e874";
 //USA news
 const AbcNewsAPI = "https://newsapi.org/v1/articles?source=abc-news-au&sortBy=top&apiKey=32444f5d6e724ace8328a2fefa63e874";
-const AbcNewsAPITwo = "https://newsapi.org/v1/articles?source=abc-news-au&sortBy=latest&apiKey=32444f5d6e724ace8328a2fefa63e874";
+// const AbcNewsAPITwo = "https://newsapi.org/v1/articles?source=abc-news-au&sortBy=latest&apiKey=32444f5d6e724ace8328a2fefa63e874";
 const cnnAPI = "https://newsapi.org/v1/articles?source=cnn&sortBy=top&apiKey=32444f5d6e724ace8328a2fefa63e874";
-const cnnAPITwo = "https://newsapi.org/v1/articles?source=cnn&sortBy=latest&apiKey=32444f5d6e724ace8328a2fefa63e874";
+// const cnnAPITwo = "https://newsapi.org/v1/articles?source=cnn&sortBy=latest&apiKey=32444f5d6e724ace8328a2fefa63e874";
 const usaToday = "https://newsapi.org/v1/articles?source=usa-today&sortBy=top&apiKey=32444f5d6e724ace8328a2fefa63e874";
+const usaTodayTwo = "https://newsapi.org/v1/articles?source=usa-today&sortBy=latest&apiKey=32444f5d6e724ace8328a2fefa63e874";
+const newYorkMagzine = "https://newsapi.org/v1/articles?source=new-york-magazine&sortBy=top&apiKey=32444f5d6e724ace8328a2fefa63e874";
+const newYorkMagzineTwo = "https://newsapi.org/v1/articles?source=new-york-magazine&sortBy=latest&apiKey=32444f5d6e724ace8328a2fefa63e874";
+const timeNews = "https://newsapi.org/v1/articles?source=time&sortBy=top&apiKey=32444f5d6e724ace8328a2fefa63e874";
+const timeNewsTwo = "https://newsapi.org/v1/articles?source=time&sortBy=latest&apiKey=32444f5d6e724ace8328a2fefa63e874";
 //Economic news
 const businessInsiderAPI = "https://newsapi.org/v1/articles?source=business-insider&sortBy=top&apiKey=32444f5d6e724ace8328a2fefa63e874";
 const businessInsiderAPITwo = "https://newsapi.org/v1/articles?source=business-insider&sortBy=latest&apiKey=32444f5d6e724ace8328a2fefa63e874";
@@ -142,13 +147,9 @@ const loadReposFunction = (myUrl, directions, option) => {
     oReq.send();
 }
 
-
 loadReposFunction(aljazeraAPIUp, "up", "international");
 loadReposFunction(associatedPressAPI, "up", "international");
 loadReposFunction(BloomingAPI, "up", "international");
-
-
-
 
 loadReposFunction(BbcNewsAPI, "up", "uk");
 loadReposFunction(dailyMailAPI, "up", "uk");
@@ -159,6 +160,18 @@ loadReposFunction(TelegraphAPI, "up", "uk");
 
 loadReposFunction(FinancialTimesAPITwo, "down", "uk");
 loadReposFunction(MetroAPITwo, "down", "uk");
+
+
+
+loadReposFunction(AbcNewsAPI, "up", "usa");
+loadReposFunction(cnnAPI, "up", "usa");
+loadReposFunction(usaToday, "up", "usa");
+loadReposFunction(timeNews, "up", "usa");
+loadReposFunction(newYorkMagzine, "up", "usa");
+
+loadReposFunction(usaTodayTwo, "down", "usa");
+loadReposFunction(newYorkMagzineTwo, "down", "usa");
+loadReposFunction(timeNewsTwo, "down", "usa");
 
 // BbcNewsAPITwo
 // dailyMailAPITwo
@@ -349,7 +362,7 @@ function onLoadusaDown() {
     // console.log(reposInfo.articles);
     // console.log(reposInfo.response.docs[0]); ${refunction onLoadInternationalFunctionUp() {
     respoArray.forEach(function(repo) {
-        myArrInterNationalNewsUp.push(repo);
+        myArrayUsaDown.push(repo);
     });
 }
 
@@ -465,7 +478,8 @@ app.get('/uk', function(req, res) {
 
 app.get('/usa', function(req, res) {
     res.render('usa', {
-        InterNationalArr: myArrayUsaUp
+        usaArr: myArrayUsaUp,
+        usaArrTwo: myArrayUsaDown
     })
 
 })
