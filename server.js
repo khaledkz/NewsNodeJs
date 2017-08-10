@@ -79,8 +79,6 @@ const nationalGraphicAPI = "https://newsapi.org/v1/articles?source=national-geog
     //Education
 const newscience = "https://newsapi.org/v1/articles?source=new-scientist&sortBy=top&apiKey=32444f5d6e724ace8328a2fefa63e874";
 // API KEYS END
-
-
 // International News Functions ===========================================
 const loadReposFunction = (myUrl, directions, option) => {
     var url = myUrl;
@@ -138,31 +136,25 @@ const loadReposFunction = (myUrl, directions, option) => {
     oReq.open('GET', url);
     oReq.send();
 }
-
 loadReposFunction(aljazeraAPIUp, "up", "international");
 loadReposFunction(associatedPressAPI, "up", "international");
 loadReposFunction(BloomingAPI, "up", "international");
-
 loadReposFunction(BbcNewsAPI, "up", "uk");
 loadReposFunction(dailyMailAPI, "up", "uk");
 loadReposFunction(FinancialTimesAPI, "up", "uk");
 loadReposFunction(IndependentAPI, "up", "uk");
 loadReposFunction(MetroAPI, "up", "uk");
 loadReposFunction(TelegraphAPI, "up", "uk");
-
 loadReposFunction(FinancialTimesAPITwo, "down", "uk");
 loadReposFunction(MetroAPITwo, "down", "uk");
-
 loadReposFunction(AbcNewsAPI, "up", "usa");
 loadReposFunction(cnnAPI, "up", "usa");
 loadReposFunction(usaToday, "up", "usa");
 loadReposFunction(timeNews, "up", "usa");
 loadReposFunction(newYorkMagzine, "up", "usa");
-
 loadReposFunction(usaTodayTwo, "down", "usa");
 loadReposFunction(newYorkMagzineTwo, "down", "usa");
 loadReposFunction(timeNewsTwo, "down", "usa");
-
 loadReposFunction(ArsTecAPI, "up", "tec");
 loadReposFunction(recodeAPI, "up", "tec");
 loadReposFunction(EngandetAPI, "up", "tec");
@@ -170,77 +162,55 @@ loadReposFunction(hackerNewsAPI, "up", "tec");
 loadReposFunction(TechChorch, "up", "tec");
 loadReposFunction(TechRadarAPI, "up", "tec");
 loadReposFunction(TheNextWebAPI, "up", "tec");
-
 loadReposFunction(ArsTecAPITwo, "down", "tec");
 loadReposFunction(EngandetAPITwo, "down", "tec");
 loadReposFunction(TechChorchTwo, "down", "tec");
 loadReposFunction(TechRadarTwoAPI, "down", "tec");
-
-
 loadReposFunction(businessInsiderAPI, "up", "economicUp");
 loadReposFunction(businessInsiderUKAPI, "up", "economicUp");
 loadReposFunction(BuzFeexAPI, "up", "economicUp");
 loadReposFunction(gruenderszen, "up", "economicUp");
-
 loadReposFunction(businessInsiderAPITwo, "down", "economicUp");
 loadReposFunction(BuzFeexAPITwo, "down", "economicUp");
 loadReposFunction(gruenderszenTwo, "down", "economicUp");
-
-
 loadReposFunction(BbcSportAPI, "up", "sport");
 loadReposFunction(espnAPI, "up", "sport");
 loadReposFunction(espnTwoAPI, "up", "sport");
 loadReposFunction(espnThreeAPI, "up", "sport");
 loadReposFunction(FoxSportAPI, "up", "sport");
-
 loadReposFunction(FoxSportAPITwo, "down", "sport");
 loadReposFunction(FootballItliaAPI, "down", "sport");
 loadReposFunction(FootballItliaAPITwo, "down", "sport");
-
 loadReposFunction(newscience, "up", "education");
-
 loadReposFunction(nationalGraphicAPI, "up", "nature");
-
 loadReposFunction(EntertianmentWeekAPI, "up", "art");
-
 loadReposFunction(aljazeraAPIUpTwo, "down", "international");
 loadReposFunction(TelegraphAPITwo, "down", "international");
 loadReposFunction(dailyMailAPITwo, "down", "international");
 
 let myArrInterNationalNewsUp = [];
 let myArrInterNationalNewsDown = [];
-
 let myArrayUKUp = [];
 let myArrayUKDowun = [];
-
 let myArrayUsaUp = [];
 let myArrayUsaDown = [];
-
 let myArrayEcoUp = [];
 let myArrayEcoDowun = [];
-
 let myArraySprotUp = [];
 let myArraySprotDoen = [];
-
 let myArrayArtUp = [];
 let myArrayArtDown = [];
-
 let myArrayEduUp = [];
 let myArrayEduDown = [];
-
 let myArrayNaturalUp = [];
 let myArrayNaturalDown = [];
-
 let myArrayTecUp = [];
 let myArrayTecDown = [];
-
 
 function onLoadInternationalFunctionUp() {
     const text = this.responseText;
     const reposInfo = JSON.parse(text);
     const respoArray = reposInfo.articles;
-    // console.log(reposInfo.articles);
-    // console.log(reposInfo.response.docs[0]); ${repo.title}
     respoArray.forEach(function(repo) {
         myArrInterNationalNewsUp.push(repo);
     });
@@ -250,20 +220,15 @@ function onLoadInternationalFunctionDown() {
     const text = this.responseText;
     const reposInfo = JSON.parse(text);
     const respoArray = reposInfo.articles;
-    // console.log(reposInfo.articles);
-    // console.log(reposInfo.response.docs[0]); ${repo.title}
     respoArray.forEach(function(repo) {
         myArrInterNationalNewsDown.push(repo);
     });
 }
 
-
 function onLoadUKUp() {
     const text = this.responseText;
     const reposInfo = JSON.parse(text);
     const respoArray = reposInfo.articles;
-    // console.log(reposInfo.articles);
-    // console.log(reposInfo.response.docs[0]); ${repo.title}
     respoArray.forEach(function(repo) {
         myArrayUKUp.push(repo);
     });
@@ -273,8 +238,6 @@ function onLoadusaUp() {
     const text = this.responseText;
     const reposInfo = JSON.parse(text);
     const respoArray = reposInfo.articles;
-    // console.log(reposInfo.articles);
-    // console.log(reposInfo.response.docs[0]); ${repo.title}
     respoArray.forEach(function(repo) {
         myArrayUsaUp.push(repo);
     });
@@ -284,8 +247,6 @@ function onLoadEduUp() {
     const text = this.responseText;
     const reposInfo = JSON.parse(text);
     const respoArray = reposInfo.articles;
-    // console.log(reposInfo.articles);
-    // console.log(reposInfo.response.docs[0]); ${repo.title}
     respoArray.forEach(function(repo) {
         myArrayEduUp.push(repo);
     });
@@ -295,21 +256,15 @@ function onLoadTecUp() {
     const text = this.responseText;
     const reposInfo = JSON.parse(text);
     const respoArray = reposInfo.articles;
-    // console.log(reposInfo.articles);
-    // console.log(reposInfo.response.docs[0]); ${repo.title}
     respoArray.forEach(function(repo) {
         myArrayTecUp.push(repo);
     });
 }
 
-
-
 function onLoadNatureUp() {
     const text = this.responseText;
     const reposInfo = JSON.parse(text);
     const respoArray = reposInfo.articles;
-    // console.log(reposInfo.articles);
-    // console.log(reposInfo.response.docs[0]); ${repo.title}
     respoArray.forEach(function(repo) {
         myArrayNaturalUp.push(repo);
     });
@@ -320,20 +275,15 @@ function onLoadSportUp() {
     const text = this.responseText;
     const reposInfo = JSON.parse(text);
     const respoArray = reposInfo.articles;
-    // console.log(reposInfo.articles);
-    // console.log(reposInfo.response.docs[0]); ${repo.title}
     respoArray.forEach(function(repo) {
         myArraySprotUp.push(repo);
     });
 }
 
-
 function onLoadEconomicUp() {
     const text = this.responseText;
     const reposInfo = JSON.parse(text);
     const respoArray = reposInfo.articles;
-    // console.log(reposInfo.articles);
-    // console.log(reposInfo.response.docs[0]); ${repo.title}
     respoArray.forEach(function(repo) {
         myArrayEcoUp.push(repo);
     });
@@ -343,21 +293,16 @@ function onLoadArtUp() {
     const text = this.responseText;
     const reposInfo = JSON.parse(text);
     const respoArray = reposInfo.articles;
-    // console.log(reposInfo.articles);
-    // console.log(reposInfo.response.docs[0]); ${repo.title}
     respoArray.forEach(function(repo) {
         myArrayArtUp.push(repo);
     });
     console.log(myArrayArtUp);
 }
 
-
 function onLoadInternationalFunctionDown() {
     const text = this.responseText;
     const reposInfo = JSON.parse(text);
     const respoArray = reposInfo.articles;
-    // console.log(reposInfo.articles);
-    // console.log(reposInfo.response.docs[0]); ${repo.title}
     respoArray.forEach(function(repo) {
         myArrInterNationalNewsDown.push(repo);
     });
@@ -367,8 +312,6 @@ function onLoadUKDown() {
     const text = this.responseText;
     const reposInfo = JSON.parse(text);
     const respoArray = reposInfo.articles;
-    // console.log(reposInfo.articles);
-    // console.log(reposInfo.response.docs[0]); ${repo.title}
     respoArray.forEach(function(repo) {
         myArrayUKDowun.push(repo);
     });
@@ -378,8 +321,6 @@ function onLoadusaDown() {
     const text = this.responseText;
     const reposInfo = JSON.parse(text);
     const respoArray = reposInfo.articles;
-    // console.log(reposInfo.articles);
-    // console.log(reposInfo.response.docs[0]); ${refunction onLoadInternationalFunctionUp() {
     respoArray.forEach(function(repo) {
         myArrayUsaDown.push(repo);
     });
@@ -389,8 +330,6 @@ function onLoadEduDown() {
     const text = this.responseText;
     const reposInfo = JSON.parse(text);
     const respoArray = reposInfo.articles;
-    // console.log(reposInfo.articles);
-    // console.log(reposInfo.response.docs[0]); ${repo.title}
     respoArray.forEach(function(repo) {
         myArrayEduDown.push(repo);
     });
@@ -400,8 +339,6 @@ function onLoadTecDown() {
     const text = this.responseText;
     const reposInfo = JSON.parse(text);
     const respoArray = reposInfo.articles;
-    // console.log(reposInfo.articles);
-    // console.log(reposInfo.response.docs[0]); ${repo.title}
     respoArray.forEach(function(repo) {
         myArrayTecDown.push(repo);
     });
@@ -411,8 +348,6 @@ function onLoadSportDown() {
     const text = this.responseText;
     const reposInfo = JSON.parse(text);
     const respoArray = reposInfo.articles;
-    // console.log(reposInfo.articles);
-    // console.log(reposInfo.response.docs[0]); ${repo.title}
     respoArray.forEach(function(repo) {
         myArraySprotDoen.push(repo);
     });
@@ -422,8 +357,6 @@ function onLoadNatureDown() {
     const text = this.responseText;
     const reposInfo = JSON.parse(text);
     const respoArray = reposInfo.articles;
-    // console.log(reposInfo.articles);
-    // console.log(reposInfo.response.docs[0]); ${repo.title}
     respoArray.forEach(function(repo) {
         myArrayNaturalDown.push(repo);
     });
@@ -433,31 +366,23 @@ function onLoadEconomicDown() {
     const text = this.responseText;
     const reposInfo = JSON.parse(text);
     const respoArray = reposInfo.articles;
-    // console.log(reposInfo.articles);
-    // console.log(reposInfo.response.docs[0]); ${repo.title}
     respoArray.forEach(function(repo) {
         myArrayEcoDowun.push(repo);
     });
 }
 // International News Functions ===========================================
-
 app.get('/', function(req, res) {
     res.render('index', {
         InterNationalArr: myArrInterNationalNewsUp,
         InterNationalArrTwo: myArrInterNationalNewsDown
     })
-
 })
-
-
 app.get('/sport', function(req, res) {
     res.render('sport', {
         sportArr: myArraySprotUp,
         sportArrTwo: myArraySprotDoen
     })
-
 })
-
 app.get('/tec', function(req, res) {
     res.render('tec', {
         tecArr: myArrayTecUp,
@@ -465,7 +390,6 @@ app.get('/tec', function(req, res) {
     })
 
 })
-
 app.get('/uk', function(req, res) {
     res.render('uk', {
         UkArrUp: myArrayUKUp,
@@ -473,7 +397,6 @@ app.get('/uk', function(req, res) {
     })
 
 })
-
 app.get('/usa', function(req, res) {
     res.render('usa', {
         usaArr: myArrayUsaUp,
@@ -481,8 +404,6 @@ app.get('/usa', function(req, res) {
     })
 
 })
-
-
 app.get('/art', function(req, res) {
     res.render('art', {
         artUp: myArrayArtUp
@@ -501,17 +422,12 @@ app.get('/eco', function(req, res) {
 
     })
 })
-
-
-
 app.get('/edu', function(req, res) {
     res.render('edu', {
         eduarr: myArrayEduUp,
         eduArrTwo: myArrayEduDown
     })
 })
-
-
 app.listen(process.env.PORT || 3000, function() {
     console.log("Server is listening on port 3000. Ready to accept requests!");
 });
