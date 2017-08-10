@@ -2,15 +2,10 @@ const express = require("express");
 const app = express();
 const formidable = require("express-formidable");
 const fs = require('fs');
-
 const exphbs = require('express-handlebars');
 const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
-
-
-
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
-
 app.use(express.static('public'));
 app.use(formidable());
 
@@ -35,9 +30,7 @@ const TelegraphAPI = "https://newsapi.org/v1/articles?source=the-telegraph&sortB
 const TelegraphAPITwo = "https://newsapi.org/v1/articles?source=the-telegraph&sortBy=latest&apiKey=32444f5d6e724ace8328a2fefa63e874";
 //USA news
 const AbcNewsAPI = "https://newsapi.org/v1/articles?source=abc-news-au&sortBy=top&apiKey=32444f5d6e724ace8328a2fefa63e874";
-// const AbcNewsAPITwo = "https://newsapi.org/v1/articles?source=abc-news-au&sortBy=latest&apiKey=32444f5d6e724ace8328a2fefa63e874";
 const cnnAPI = "https://newsapi.org/v1/articles?source=cnn&sortBy=top&apiKey=32444f5d6e724ace8328a2fefa63e874";
-// const cnnAPITwo = "https://newsapi.org/v1/articles?source=cnn&sortBy=latest&apiKey=32444f5d6e724ace8328a2fefa63e874";
 const usaToday = "https://newsapi.org/v1/articles?source=usa-today&sortBy=top&apiKey=32444f5d6e724ace8328a2fefa63e874";
 const usaTodayTwo = "https://newsapi.org/v1/articles?source=usa-today&sortBy=latest&apiKey=32444f5d6e724ace8328a2fefa63e874";
 const newYorkMagzine = "https://newsapi.org/v1/articles?source=new-york-magazine&sortBy=top&apiKey=32444f5d6e724ace8328a2fefa63e874";
@@ -161,8 +154,6 @@ loadReposFunction(TelegraphAPI, "up", "uk");
 loadReposFunction(FinancialTimesAPITwo, "down", "uk");
 loadReposFunction(MetroAPITwo, "down", "uk");
 
-
-
 loadReposFunction(AbcNewsAPI, "up", "usa");
 loadReposFunction(cnnAPI, "up", "usa");
 loadReposFunction(usaToday, "up", "usa");
@@ -172,6 +163,19 @@ loadReposFunction(newYorkMagzine, "up", "usa");
 loadReposFunction(usaTodayTwo, "down", "usa");
 loadReposFunction(newYorkMagzineTwo, "down", "usa");
 loadReposFunction(timeNewsTwo, "down", "usa");
+
+
+
+
+loadReposFunction(businessInsiderAPI, "up", "economicUp");
+loadReposFunction(businessInsiderUKAPI, "up", "economicUp");
+loadReposFunction(BuzFeexAPI, "up", "economicUp");
+loadReposFunction(gruenderszen, "up", "economicUp");
+
+loadReposFunction(businessInsiderAPITwo, "down", "economicUp");
+loadReposFunction(BuzFeexAPITwo, "down", "economicUp");
+loadReposFunction(gruenderszenTwo, "down", "economicUp");
+
 
 // BbcNewsAPITwo
 // dailyMailAPITwo
@@ -258,8 +262,6 @@ function onLoadusaUp() {
     });
 }
 
-
-
 function onLoadEduUp() {
     const text = this.responseText;
     const reposInfo = JSON.parse(text);
@@ -307,7 +309,6 @@ function onLoadSportUp() {
 }
 
 
-
 function onLoadEconomicUp() {
     const text = this.responseText;
     const reposInfo = JSON.parse(text);
@@ -315,7 +316,7 @@ function onLoadEconomicUp() {
     // console.log(reposInfo.articles);
     // console.log(reposInfo.response.docs[0]); ${repo.title}
     respoArray.forEach(function(repo) {
-        myArrayArtUp.push(repo);
+        myArrayEcoUp.push(repo);
     });
 }
 
@@ -326,7 +327,7 @@ function onLoadArtUp() {
     // console.log(reposInfo.articles);
     // console.log(reposInfo.response.docs[0]); ${repo.title}
     respoArray.forEach(function(repo) {
-        myArrayEcoUp.push(repo);
+        myArrayArtUp.push(repo);
     });
 }
 
@@ -418,7 +419,7 @@ function onLoadEconomicDown() {
     // console.log(reposInfo.articles);
     // console.log(reposInfo.response.docs[0]); ${repo.title}
     respoArray.forEach(function(repo) {
-        myArrInterNationalNewsDown.push(repo);
+        myArrayEcoDowun.push(repo);
     });
 }
 
@@ -497,7 +498,9 @@ app.get('/natural', function(req, res) {
 })
 app.get('/eco', function(req, res) {
     res.render('eco', {
-        InterNationalArr: myArrayEcoUp
+        ecoupArr: myArrayEcoUp,
+        ecoTwoArr: myArrayEcoDowun
+
     })
 })
 app.get('/edu', function(req, res) {
