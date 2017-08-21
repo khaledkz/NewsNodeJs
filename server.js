@@ -4,10 +4,24 @@ const formidable = require("express-formidable");
 const fs = require('fs');
 const exphbs = require('express-handlebars');
 const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+var bodyParser = require('body-parser');
+
+// Load the SDK for JavaScript
+const AWS = require('aws-sdk');
+
+// Load credentials and set region from JSON file
+AWS.config.loadFromPath('config.json');
+
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
+
 app.use(express.static('public'));
 app.use(formidable());
+
 // API KEYS START
 //international news
 const aljazeraAPIUp = "https://newsapi.org/v1/articles?source=al-jazeera-english&sortBy=top&apiKey=32444f5d6e724ace8328a2fefa63e874";
@@ -371,12 +385,75 @@ function onLoadEconomicDown() {
     });
 }
 // International News Functions ===========================================
+// app.get('/', function(req, res) {
+//     // res.render('index', {
+//     //     InterNationalArr: myArrInterNationalNewsUp,
+//     //     InterNationalArrTwo: myArrInterNationalNewsDown
+//     // })
+//     app.post('/', function(req, res) {
+
+//         const filePath = __dirname + '/data/posts.json';
+
+//         const cb = function(error, file) {
+//             // we call .toString() to turn the file buffer to a String
+//             const fileData = file.toString();
+//             // we use JSON.parse to get an object out the String
+//             const postsJson = JSON.parse(fileData);
+//             // add new post to the file
+//             postsJson.push(req.body);
+
+//             // write back to file
+//             fs.writeFile(filePath, JSON.stringify(postsJson), (err) => {
+//                 if (err) throw err;
+//                 console.log('The file has been saved!');
+//             });
+
+//             res.end("Success.");
+//         };
+
+//         fs.readFile(filePath, cb);
+
+//     });
+
+
+
+// })
+
+
 app.get('/', function(req, res) {
-    res.render('index', {
-        InterNationalArr: myArrInterNationalNewsUp,
-        InterNationalArrTwo: myArrInterNationalNewsDown
-    })
-})
+
+    var docClient = new AWS.DynamoDB.DocumentClient();
+
+    var params = {
+        TableName: "NewsData",
+        ProjectionExpression: "title,summary,Description,author,image",
+    };
+
+    console.log("Scanning posts table.");
+    docClient.scan(params, onScan);
+
+    function onScan(err, data) {
+        if (err) {
+            console.error("Unable to scan the table. Error JSON:", JSON.stringify(err, null, 2));
+        } else {
+            // print all the posts
+            console.log("Scan succeeded.");
+
+            // Here you can test how to access the posts, not needed for the functionality to work, so could be deleted
+            data.Items.forEach(function(post) {
+                console.log(
+                    post.title + ": ",
+                    post.author, "- content:", post.Description, post.image);
+            });
+
+            res.render('index', {
+                InterNationalArr: myArrInterNationalNewsUp,
+                InterNationalArrTwo: myArrInterNationalNewsDown,
+                posts: data.Items
+            });
+        }
+    }
+});
 app.get('/sport', function(req, res) {
     res.render('sport', {
         sportArr: myArraySprotUp,
